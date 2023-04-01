@@ -27,13 +27,45 @@
         img {
             max-width: 100%;
         }
+        button {
+        padding: 10px 20px;
+        font-size: 1.2rem;
+        background-color: #007bff;
+        color: #fff;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        margin-top: 2rem;
+        transition: background-color 0.2s ease-in-out;
+        }
+
+        button:hover {
+            background: #0090FF;
+        }
+        
         </style>
 </head>
 <body>
     <div class="container">
         <h1>Camera Video Processing</h1>
-        <img src="{{ url_for('video_feed') }}">
+        <img id="myvideo"  src="{{ url_for('video_feed') }}">
+        <button id="myButton">Close video!</button>
     </div>
 </body>
 </html>
-    </style>
+
+<script>
+    const button = document.getElementById('myButton');
+    const myvideo = document.getElementById('myvideo');
+
+    button.addEventListener('click', myFunction);
+
+    function myFunction() {
+        // add your code here
+        fetch(
+            '/stop_video_feed'
+        ).then(
+            myvideo.src = ''
+        )
+    }
+</script>
