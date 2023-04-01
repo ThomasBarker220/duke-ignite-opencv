@@ -8,15 +8,16 @@ app = Flask(__name__)
 
 camera = cv2.VideoCapture(0)
 detector = HandDetector(detectionCon= .8, maxHands = 1)
+index_ = 0
 
 def process_frame(frame):
     # Your frame processing logic here
     # gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     # edges = cv2.Canny(gray, 100, 200)
-    
-    index = 0
-    length = 10
-    hairs = [0,1,2,3,4,5,6,7,8,9]
+
+    # index = 0
+    # length = 10
+    # hairs = [0,1,2,3,4,5,6,7,8,9]
     
     height, width, layers = frame.shape
 
@@ -28,19 +29,19 @@ def process_frame(frame):
 
         fingerUp = detector.fingersUp(lmList)
         
-        hair = hairs[index]
+        global index_
+        # hair = hairs[index]
         if fingerUp[1] == 1:
             # hair = hairs[index]
-            while True:
+
                 # hair = hairs[index]
-                cv2.putText(frame, str(hair), (20,20), cv2.FONT_HERSHEY_COMPLEX, 1, (255,255,255), 1, cv2.LINE_AA)
-                
-                if index < length - 1:
-                    index = 0
-                else:
-                    index += 1
+            # print(index_)
+            index_ = (index_ + 1) % 10
+            # print(index_)
+            cv2.putText(frame, str(index_), (20,20), cv2.FONT_HERSHEY_COMPLEX, 1, (255,255,255), 1, cv2.LINE_AA)
+            
         else:
-            cv2.putText(frame, str(hair), (20,20), cv2.FONT_HERSHEY_COMPLEX, 1, (255,255,255), 1, cv2.LINE_AA)
+            cv2.putText(frame, str(index_), (20,20), cv2.FONT_HERSHEY_COMPLEX, 1, (255,255,255), 1, cv2.LINE_AA)
     
     return image
 
