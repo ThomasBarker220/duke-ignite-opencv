@@ -117,10 +117,11 @@ def process_frame(frame):
             # hair = hairs[index]
 
                 # hair = hairs[index]
-                index_ = (index_ + 1) % 10
-                cv2.putText(frame, str(index_), (20,20), cv2.FONT_HERSHEY_COMPLEX, 1, (255,255,255), 1, cv2.LINE_AA)
-
-                
+            # print(index_)
+            index_ = (index_ + 1) % 10
+            # print(index_)
+            cv2.putText(frame, str(index_), (20,20), cv2.FONT_HERSHEY_COMPLEX, 1, (255,255,255), 1, cv2.LINE_AA)
+            
         else:
             cv2.putText(frame, str(index_), (20,20), cv2.FONT_HERSHEY_COMPLEX, 1, (255,255,255), 1, cv2.LINE_AA)
     
