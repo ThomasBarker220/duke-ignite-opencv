@@ -17,8 +17,6 @@ index_ = 0
 face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 eye_cascade = cv2.CascadeClassifier('haarcascade_eye.xml')
 # glasses_orig = cv2.imread('glass.png', -1)
-images = ['glass.png', 'glasses.png', 'swirlyglasses.png']
-eye_cache = None
 
 images = ['glass.png', 'glasses.png', 'swirlyglasses.png']
 
