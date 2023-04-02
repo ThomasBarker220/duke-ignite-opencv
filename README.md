@@ -6,7 +6,7 @@
 This is a Flask web application that uses OpenCV to apply virtual glasses to a live video feed from a user's webcam, using facial recognition and gesture recognition.
 
 ## Members
-- Developors: 1. Minghui Zhu; 2. Congcong Ma; 3. Thomas Barker.
+- Developers: 1. Minghui Zhu; 2. Congcong Ma; 3. Thomas Barker.
 - Mentor: JJ Je. (Shout out to Duke Ignite organizers and mentors!)
 
 ## Features
