@@ -73,7 +73,7 @@ def process_frame(frame):
 
             face_glasses_roi_color = frame_cp[glasses_ymin:glasses_ymax, x:x + w]
 
-
+            glasses = cv2.resize(glasses_orig, (w, height_glasses), interpolation=cv2.INTER_CUBIC)
             face_glasses_roi_color = transparentOverlay(face_glasses_roi_color, glasses)
             frame_cp[glasses_ymin:glasses_ymax, x:x + w] = face_glasses_roi_color
     # if hands:
