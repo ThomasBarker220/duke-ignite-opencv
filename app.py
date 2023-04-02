@@ -89,7 +89,7 @@ def process_frame(frame):
     for bbox in bboxs:
         x, y, w, h = bbox["bbox"]
         if h > 0 and w > 0:
-            glasses_ymin = int(y + 1 * h / 5)
+            glasses_ymin = int(y + 0.8 * h / 5)
             glasses_ymax = int(y + 2.5 * h / 5)
             height_glasses = glasses_ymax - glasses_ymin
 
