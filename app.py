@@ -18,7 +18,7 @@ face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 eye_cascade = cv2.CascadeClassifier('haarcascade_eye.xml')
 # glasses_orig = cv2.imread('glass.png', -1)
 
-images = ['glass.png', 'glasses.png', 'swirlyglasses.png']
+images = ['glass.png', 'glasses.png', 'swirlyglasses.png', 'glasses-images/glasses2 (1).png']
 
 def transparentOverlay(src, overlay, pos=(0,0), scale=1):
     overlay = cv2.resize(overlay, (0,0), fx=scale, fy=scale)
@@ -70,7 +70,7 @@ def process_frame(frame):
             # hair = hairs[index]
 
                 # hair = hairs[index]
-                index_ = (index_ + 1) % 3
+                index_ = (index_ + 1) % 4
                 cv2.putText(frame_cp, str(index_), (20,20), cv2.FONT_HERSHEY_COMPLEX, 1, (255,255,255), 1, cv2.LINE_AA)
 
                 
