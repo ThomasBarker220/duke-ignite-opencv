@@ -39,7 +39,7 @@ def runVideo(index):
         gray = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
         glasses_orig = cv2.imread(images[current_index], -1)
 
-        gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        gray_frame = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         faces = face_cascade.detectMultiScale(gray_frame, 1.3, 5)
         
         for (x, y, w, h) in faces:

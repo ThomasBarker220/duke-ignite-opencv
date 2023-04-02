@@ -16,7 +16,8 @@ index_ = 0
 
 face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 eye_cascade = cv2.CascadeClassifier('haarcascade_eye.xml')
-glasses_orig = cv2.imread('glass.png', -1)
+# glasses_orig = cv2.imread('glass.png', -1)
+images = ['glass.png', 'glasses.png', 'swirlyglasses.png']
 eye_cache = None
 
 images = ['glass.png', 'glasses.png', 'swirlyglasses.png']
@@ -59,6 +60,29 @@ def process_frame(frame):
     gray = cv2.cvtColor(frame, cv2.COLOR_RGB2GRAY)
     # faces = face_cascade.detectMultiScale(gray, 1.3, 6, 0, (120,120), (350,350))
     frame_cp = frame.copy()
+    hands, image = detector.findHands(frame)
+    if hands:
+        lmList = hands[0]
+
+        fingerUp = detector.fingersUp(lmList)
+        
+        global index_
+        # hair = hairs[index]
+        if fingerUp[1] == 1:
+            # hair = hairs[index]
+
+                # hair = hairs[index]
+                index_ = (index_ + 1) % 3
+                cv2.putText(frame_cp, str(index_), (20,20), cv2.FONT_HERSHEY_COMPLEX, 1, (255,255,255), 1, cv2.LINE_AA)
+
+                
+        else:
+            cv2.putText(frame_cp, str(index_), (20,20), cv2.FONT_HERSHEY_COMPLEX, 1, (255,255,255), 1, cv2.LINE_AA)
+
+
+
+
+
     img, bboxs = fdetector.findFaces(frame)
 
     # hands, image = detector.findHands(frame)
@@ -73,6 +97,7 @@ def process_frame(frame):
 
             face_glasses_roi_color = frame_cp[glasses_ymin:glasses_ymax, x:x + w]
 
+            glasses_orig = cv2.imread(images[index_], -1)
             glasses = cv2.resize(glasses_orig, (w, height_glasses), interpolation=cv2.INTER_CUBIC)
             face_glasses_roi_color = transparentOverlay(face_glasses_roi_color, glasses)
             frame_cp[glasses_ymin:glasses_ymax, x:x + w] = face_glasses_roi_color
