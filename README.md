@@ -35,3 +35,8 @@ This is a Flask web application that uses OpenCV to apply virtual glasses to a l
 - Expand the range of available glasses to include more diverse styles and designs.
 - Add support for other types of accessories, such as hats or earrings, that can be applied to the user's face in real-time.
 
+## References:
+- [OpenCV](https://opencv.org/)
+- [ignite-cv-workshop](https://github.com/bharat-krishnan/ignite-cv-workshop)
+- [How to make your own Instagram filter with facial recognition from scratch using python](https://github.com/mitkrieg/live-image-face-filter-blog)
+
