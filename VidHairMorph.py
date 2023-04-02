@@ -37,7 +37,7 @@ def runVideo(index):
 
         ret, img = cap.read()
         gray = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
-        glasses_orig = cv2.imread(images[index], -1)
+        glasses_orig = cv2.imread(images[current_index], -1)
 
 
         faces = face_cascade.detectMultiScale(gray, 1.3, 6, 0, (120,120), (350,350))
