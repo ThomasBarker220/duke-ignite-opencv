@@ -4,6 +4,7 @@ from cvzone.FaceDetectionModule import FaceDetector
 from cvzone.FaceMeshModule import FaceMeshDetector
 import cv2
 import base64
+import numpy as np
 
 app = Flask(__name__)
 
@@ -16,6 +17,9 @@ index_ = 0
 face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 eye_cascade = cv2.CascadeClassifier('haarcascade_eye.xml')
 glasses_orig = cv2.imread('glass.png', -1)
+eye_cache = None
+
+images = ['glass.png', 'glasses.png', 'swirlyglasses.png']
 
 def transparentOverlay(src, overlay, pos=(0,0), scale=1):
     overlay = cv2.resize(overlay, (0,0), fx=scale, fy=scale)
@@ -69,7 +73,6 @@ def process_frame(frame):
 
             face_glasses_roi_color = frame_cp[glasses_ymin:glasses_ymax, x:x + w]
 
-            glasses = cv2.resize(glasses_orig, (w, height_glasses), interpolation=cv2.INTER_CUBIC)
 
             face_glasses_roi_color = transparentOverlay(face_glasses_roi_color, glasses)
             frame_cp[glasses_ymin:glasses_ymax, x:x + w] = face_glasses_roi_color
