@@ -11,6 +11,7 @@ eye_cascade = cv2.CascadeClassifier('haarcascade_eye.xml')
 cap = cv2.VideoCapture(0)
 cap.set(cv2.CAP_PROP_FPS, 30)
 
+current_index = 0
 
 def transparentOverlay(src, overlay, pos=(0,0), scale=1):
 
@@ -29,6 +30,9 @@ def transparentOverlay(src, overlay, pos=(0,0), scale=1):
 
 
 def runVideo(index):
+    global current_index
+    current_index = index
+
     while True:
 
         ret, img = cap.read()
