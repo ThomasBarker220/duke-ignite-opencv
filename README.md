@@ -12,7 +12,7 @@ This is a Flask web application that uses OpenCV to apply virtual glasses filter
 </p>
 <p align="center">Developers Selfie with Glasses Filtering😎.</p>
 
-## Feature5
+## Features
 - Uses OpenCV to track the user's face in real-time, detecting facial landmarks such as the eyes.
 - Applies virtual glasses filtering to the user's face in the video feed, based on the detected eyes coordinates.
 - Uses handing tracking and gesture recognition to allow the user to switch between different types of glasses by making specific hand gestures in front of the webcam: 
